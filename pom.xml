@@ -14,4 +14,12 @@
         <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub nickmafra Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/nickmafra/nm-concurrent</url>
+        </repository>
+    </distributionManagement>
+
 </project>
