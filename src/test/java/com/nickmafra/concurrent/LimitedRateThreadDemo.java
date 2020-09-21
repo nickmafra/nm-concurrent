@@ -1,5 +1,7 @@
 package com.nickmafra.concurrent;
 
+import com.nickmafra.exception.CheckedRunnable;
+
 import java.util.Scanner;
 
 public class LimitedRateThreadDemo {
@@ -14,7 +16,12 @@ public class LimitedRateThreadDemo {
     public LimitedRateThreadDemo() {
         startTime = System.currentTimeMillis();
 
-        thread = new LimitedRateThread(3000, this::printTime);
+        thread = new LimitedRateThread(3000, new CheckedRunnable<InterruptedException>() {
+            @Override
+            public void run() throws InterruptedException {
+                LimitedRateThreadDemo.this.printTime();
+            }
+        });
         try {
             thread.start();
 
